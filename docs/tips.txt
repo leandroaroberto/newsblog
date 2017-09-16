@@ -1,0 +1,48 @@
+Insert a image:
+
+  {{ Html::image('img/news.png') }}
+   
+Navbar
+
+<nav class="navbar navbar-brand bg-faded">
+                    <h2><a class="navbar-brand" href="#">{{ $news->title }}</a></h2>
+                    <p>{{ $news->summary }}</p>
+                </nav>
+
+Glyphicons
+
+<span class="glyphicons glyphicons-bin"></span>
+
+
+******************** versao 1 index ******************
+
+
+@extends('layouts.app')
+@section('content')
+
+<div class="container">
+    <div class="center-block">
+    <h1>Latest News</h1>    
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">        
+            @if(count($latest) > 0)
+                @foreach($latest as $news)            
+                    <div class="panel-heading">
+                        <h2><a href="#">{{ $news->title }}</a></h2>
+                    </div>
+                    <div class="panel-body">
+                        <p>{{ $news->summary }}</p>
+                    </div>
+                @endforeach
+            @else
+            <div class="panel-heading"></div>
+            <div class="panel-body">
+                <p>Strange, but today we do not have any news!</p>
+            </div>
+            @endif
+            </div>
+        </div>
+    </div>
+</div>
+
+@endsection

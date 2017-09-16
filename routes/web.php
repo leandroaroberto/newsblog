@@ -11,15 +11,28 @@
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     //return view('welcome');
     return view('index');
-});
+});*/
+
+Route::get('/','newsController@index');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'newsController@dashboard')->middleware('auth');
+
+
+
+Route::get('/home/add', 'newsController@addNews')->middleware('auth');
+
+Route::post('/home/saveNews', 'newsController@saveNews')->middleware('auth');
+
+Route::get('/home/remove/{id}','newsController@remove')->middleware('auth');;
+
+Route::get('/home/{id}','newsController@show');
+
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');
