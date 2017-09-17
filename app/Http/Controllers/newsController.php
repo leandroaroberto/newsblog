@@ -13,12 +13,11 @@ class newsController extends Controller
     
     // List Latest News on HomePage
     public function index(){        
-        /*$news = News::orderBy('created_at', 'desc')
-               ->take(10)
-               ->get();*/
         $news = News::orderBy('created_at', 'desc')
-               ->paginate(10);
-        
+               ->take(10)
+               ->get();
+        /*$news = News::orderBy('created_at', 'desc')
+               ->paginate(10);*/       
         
         return view('index')->with(['latest'=> $news]);        
     }
@@ -30,9 +29,13 @@ class newsController extends Controller
         $email = Auth::user()->email;
         $name = Auth::user()->name;
                
+        /*$data = News::where('email', $email)
+               ->orderBy('created_at', 'desc')               
+               ->get();*/
+        
         $data = News::where('email', $email)
                ->orderBy('created_at', 'desc')               
-               ->get();
+               ->paginate(5);
         
         return view('home')->with(['data'=> $data,'name'=> $name]);
     }
@@ -123,7 +126,7 @@ class newsController extends Controller
         
         //return redirect('/home/add')->with(['mesage'=>'Your article has been submitted.']);
         //$message = 'Your article has been submitted.';
-        return redirect('')->action('newsController@addNews')->withMessage("Your article has been submitted.");
+        return redirect()->action('newsController@addNews')->withMessage("Your article has been submitted.");
         
         
     }

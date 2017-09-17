@@ -33,7 +33,7 @@
         <p>Strange, but today we do not have any news!</p>    
     @endif 
     
-    {{ $latest->links() }}
+    
     
 </div>
 
