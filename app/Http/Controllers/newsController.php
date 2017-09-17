@@ -20,7 +20,7 @@ class newsController extends Controller
     public function index(){
         //$news = News::all();
         $news = News::orderBy('created_at', 'desc')
-               ->take(3)
+               ->take(10)
                ->get();
         
         

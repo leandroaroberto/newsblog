@@ -14,6 +14,7 @@
     <!--<link href="{{ asset('css/app.css') }}" rel="stylesheet">-->
     {{Html::style('css/bootstrap.min.css')}}
     {{Html::style('css/bootstrap-theme.min.css')}}
+    {{Html::style('css/extra.css')}}
 </head>
 <body>
     <div id="app">
@@ -44,6 +45,7 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
+                        <li><a href="#">RSS</a></li>
                         @if (Auth::guest())
                             <li><a href="{{ route('login') }}">Login</a></li>
                             <li><a href="{{ route('register') }}">Register</a></li>

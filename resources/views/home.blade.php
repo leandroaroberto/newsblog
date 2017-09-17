@@ -29,8 +29,16 @@
                         </tr>
                     @foreach($data as $dt)
                     <tr>
-                        <td></td>
-                        <td><a href="/home/{{$dt->id}}">{{ $dt->title }}</a></td>
+                        <td>
+                            <a href="/home/{{$dt->id}}">    
+                            @if($dt->photo != '')
+                                {{ Html::image($dt->photo,'alt', array( 'width' => 50, 'height' => 38 , 'class' => 'd-inline-block align-top')) }}
+                            @else
+                                {{ Html::image('uploads/nopic.jpg') }}
+                            @endif           
+                            </a> 
+                        </td>
+                        <td align="center" ><a href="/home/{{$dt->id}}">{{ $dt->title }}</a></td>
                         <td align="center">{{ $dt->summary }}</td>
                         <td><a href='/home/remove/{{$dt->id}}'>Remove</a></td>
                     </tr>

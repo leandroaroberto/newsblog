@@ -1,0 +1,11 @@
+
+.bg-grey
+{
+    background-color: #f2f2f2;
+    color: #000;
+    /*#eee;*/         
+}
+
+.bg-grey a:link{
+    color: #000;
+}
