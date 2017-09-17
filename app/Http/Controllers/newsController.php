@@ -23,8 +23,6 @@ class newsController extends Controller
                ->take(10)
                ->get();
         
-        
-        
         return view('index')->with(['latest'=> $news]);        
     }
     
@@ -63,6 +61,33 @@ class newsController extends Controller
         else
         {
             //generate summary based on fulltext
+            
+            $originalText = $request->input('text');
+            //$tam = strlen($originalText);
+            $textSummary = explode(" ",$originalText);
+            $tam = count($textSummary);
+            
+            if ($tam > 10)
+            {
+                $max = $tam / 2;
+                $max = intval($max);
+                $newText = "";
+                
+                for($i = 0; $i <= $max; $i++)
+                {
+                    $newText .= $textSummary[$i]. " ";
+                }
+                
+                $newText = trim($newText);
+                $newText .= "...";
+                $news->summary = $newText;
+                
+            }   
+            else
+            {
+                $news->summary = $request->input('summary');
+            }    
+            
         }    
         
         $news->email = Auth::user()->email;
