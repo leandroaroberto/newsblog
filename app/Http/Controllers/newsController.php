@@ -44,6 +44,7 @@ class newsController extends Controller
         return view('news.add')->with('message',$message);
     }
     
+    //Publish the news
     public function saveNews(Request $request){
 
         $this->validate($request, [
@@ -59,8 +60,7 @@ class newsController extends Controller
             $news->summary = $request->input('summary');
         else
         {
-            //generate summary based on fulltext
-            
+            //generate summary based on fulltext            
             $originalText = $request->input('text');
             $textSummary = explode(" ",$originalText);
             $tam = count($textSummary);
@@ -129,6 +129,7 @@ class newsController extends Controller
         
     }
     
+    //Complete article mode
     public function show($id){
         $news = News::where('id', $id)               
                ->get();
@@ -137,6 +138,7 @@ class newsController extends Controller
         
     }
     
+    //Removes selected article
     public function remove(Request $request){
         
         $id = $request->input('id');
@@ -152,7 +154,8 @@ class newsController extends Controller
         return redirect()->action('newsController@dashboard');
         
     }
-        
+     
+    //Dialog to confirm article exclusion
      public function showConfirm(Request $data){               
         $str1 = $data->input('str1');
         $action = $data->input('action');
