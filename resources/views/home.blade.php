@@ -40,7 +40,19 @@
                         </td>
                         <td align="center" ><a href="/home/{{$dt->id}}">{{ $dt->title }}</a></td>
                         <td align="center">{{ $dt->summary }}</td>
-                        <td><a href='/home/remove/{{$dt->id}}'>Remove</a></td>
+                        
+                        <!--<td><a href='/home/remove/{{$dt->id}}'>{{Html::image('img/trashico.png')}}</a></td>-->
+                        
+                        <td>
+                            {{Form::open(['url'=>'/home/deleteNews','method'=>'POST'])}}
+                            {{Form::hidden('str1','You are about to delete this item, are you sure?')}}
+                            {{Form::hidden('action','newsController@remove')}}
+                            {{Form::hidden('method','POST')}}
+                            {{Form::hidden('id',$dt->id)}}
+                            {{Form::hidden('return','newsController@dashboard')}}
+                            {{Form::submit('Remove',['class'=>'btn btn-danger'])}}
+                            {{Form::close()}}
+                        </td>
                     </tr>
                     @endforeach
                     </table>

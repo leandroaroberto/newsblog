@@ -1,0 +1,5 @@
+Using softDeletes to implement a future "Undo" or "trash"
+
+Auto generating the summary
+
+Implement of the method paginate()

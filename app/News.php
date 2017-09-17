@@ -3,12 +3,14 @@
 namespace crossover;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class News extends Model
 {
     //
     protected $table = "news";
     protected $filable = ['title','photo','fulltext','summary','email',];
+    use SoftDeletes;
     protected $dates = ['deleted_at'];
     
     function news(){

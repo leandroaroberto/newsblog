@@ -24,13 +24,18 @@ Route::get('/home', 'newsController@dashboard')->middleware('auth');
 
 
 
-Route::get('/home/add', 'newsController@addNews')->middleware('auth');
+Route::get('/home/add', 'newsController@addNews',['message'=>''])->middleware('auth');
 
 Route::post('/home/saveNews', 'newsController@saveNews')->middleware('auth');
 
-Route::get('/home/remove/{id}','newsController@remove')->middleware('auth');;
+//Route::get('/home/remove/{id}','newsController@remove')->middleware('auth');;
+
+Route::post('/home/remove/','newsController@remove')->middleware('auth');;
 
 Route::get('/home/{id}','newsController@show');
+
+
+Route::post('/home/deleteNews','newsController@showConfirm');
 
 
 Auth::routes();

@@ -11,28 +11,24 @@ use Illuminate\Support\Facades\Auth;
 class newsController extends Controller
 {
     
-    /*public function __construct()
-    {
-        $this->middleware('auth');
-    }*/
-    
     // List Latest News on HomePage
-    public function index(){
-        //$news = News::all();
-        $news = News::orderBy('created_at', 'desc')
+    public function index(){        
+        /*$news = News::orderBy('created_at', 'desc')
                ->take(10)
-               ->get();
+               ->get();*/
+        $news = News::orderBy('created_at', 'desc')
+               ->paginate(10);
+        
         
         return view('index')->with(['latest'=> $news]);        
     }
     
     
-    
+    //Dashboard start page when loged in
     public function dashboard(){
                 
         $email = Auth::user()->email;
         $name = Auth::user()->name;
-        //$email = "leroberto@gmail.com";
                
         $data = News::where('email', $email)
                ->orderBy('created_at', 'desc')               
@@ -41,12 +37,12 @@ class newsController extends Controller
         return view('home')->with(['data'=> $data,'name'=> $name]);
     }
     
-    public function addNews(){
-        return view('news.add');
+    public function addNews($message = null){
+        return view('news.add')->with('message',$message);
     }
     
     public function saveNews(Request $request){
-        //return $request;
+
         $this->validate($request, [
         'title' => 'required|max:50',
         'text' => 'required|',        
@@ -63,11 +59,10 @@ class newsController extends Controller
             //generate summary based on fulltext
             
             $originalText = $request->input('text');
-            //$tam = strlen($originalText);
             $textSummary = explode(" ",$originalText);
             $tam = count($textSummary);
             
-            if ($tam > 10)
+            if ($tam > 20)
             {
                 $max = $tam / 2;
                 $max = intval($max);
@@ -80,8 +75,7 @@ class newsController extends Controller
                 
                 $newText = trim($newText);
                 $newText .= "...";
-                $news->summary = $newText;
-                
+                $news->summary = $newText;                
             }   
             else
             {
@@ -90,8 +84,7 @@ class newsController extends Controller
             
         }    
         
-        $news->email = Auth::user()->email;
-        
+        $news->email = Auth::user()->email;        
         $userid = Auth::user()->id;
         
         //Upload
@@ -122,27 +115,55 @@ class newsController extends Controller
         }
         
         try{
-            $id = $news->save();
-           
+            $id = $news->save();           
         }
         catch (Exception $e){
             return $e->message();
         }
         
-        return redirect('/home/add')->with(['mesage'=>'Your article has been submitted.']);
+        //return redirect('/home/add')->with(['mesage'=>'Your article has been submitted.']);
+        //$message = 'Your article has been submitted.';
+        return redirect('')->action('newsController@addNews')->withMessage("Your article has been submitted.");
+        
         
     }
     
     public function show($id){
-        //$news = News::find($id)->get();
         $news = News::where('id', $id)               
                ->get();
         
         return view('news.info')->with(['news'=> $news]);
+        
+       
+        
     }
     
-    public function remove($id){
-        return "Remover $id";
+    public function remove(Request $request){
+        
+        $id = $request->input('id');
+        $news = News::find($id);
+        
+        try{
+            $news->delete();
+        }
+        catch (Exception $e){
+            return $e->message();
+        }
+        
+        return redirect()->action('newsController@dashboard');
+        
+        //return "Remover " .$request->input('id');
+        
+    }
+    
+    
+     public function showConfirm(Request $data){               
+        $str1 = $data->input('str1');
+        $action = $data->input('action');
+        $method = $data->input('method');        
+        $id = $data->input('id');
+        $return = $data->input('return');        
+        return view('confirm')->with(['str1'=> $str1,'action'=> $action, 'method'=> $method, 'id'=> $id, 'return' => $return]);                
     }
     
     
