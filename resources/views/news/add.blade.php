@@ -40,7 +40,7 @@
                     </p>
                     <p>
                     {{Form::label('photo','Photo: ') }}
-                    <small>Max dimensions: 1024 x 768 px (JPG or PNG files)</small>
+                    <small>Max dimensions: 2500 x 1000 px (JPG or PNG files)</small>
                     {{Form::file('photo','',['class'=>'form-control'])}}                    
                     </p>
                     <p>

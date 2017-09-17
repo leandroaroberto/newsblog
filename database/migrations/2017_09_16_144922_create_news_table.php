@@ -15,7 +15,7 @@ class CreateNewsTable extends Migration
     {
         Schema::create('news', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('title',50);
+            $table->string('title',100);
             $table->string('photo',100)->nullable()->default('nopic.jpg');
             $table->longText('fulltext');
             $table->text('summary')->nullable();

@@ -48,9 +48,9 @@ class newsController extends Controller
     public function saveNews(Request $request){
 
         $this->validate($request, [
-        'title' => 'required|max:50',
+        'title' => 'required|max:100',
         'text' => 'required|',        
-        'photo' => 'mimes:jpeg,jpg,png|file|dimensions:min_width=100,min_height=200,max_width=1024,max_height=768',
+        'photo' => 'mimes:jpeg,jpg,png|file|dimensions:min_width=100,min_height=200,max_width=2500,max_height=1000',
         ]);
         
         $news = new News();
