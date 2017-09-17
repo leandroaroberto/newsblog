@@ -82,7 +82,7 @@ class newsController extends Controller
             }   
             else
             {
-                $news->summary = $request->input('summary');
+                $news->summary = $request->input('text');
             }    
             
         }    
@@ -123,9 +123,7 @@ class newsController extends Controller
         catch (Exception $e){
             return $e->message();
         }
-        
-        //return redirect('/home/add')->with(['mesage'=>'Your article has been submitted.']);
-        //$message = 'Your article has been submitted.';
+                
         return redirect()->action('newsController@addNews')->withMessage("Your article has been submitted.");
         
         
@@ -136,8 +134,6 @@ class newsController extends Controller
                ->get();
         
         return view('news.info')->with(['news'=> $news]);
-        
-       
         
     }
     
@@ -155,11 +151,8 @@ class newsController extends Controller
         
         return redirect()->action('newsController@dashboard');
         
-        //return "Remover " .$request->input('id');
-        
     }
-    
-    
+        
      public function showConfirm(Request $data){               
         $str1 = $data->input('str1');
         $action = $data->input('action');
