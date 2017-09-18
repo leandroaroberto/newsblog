@@ -10,19 +10,13 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 class firstTest extends TestCase
 {
     
-    use DatabaseMigrations;
+    //use DatabaseMigrations;
     /** @test */
    public function see_all_posts(){
        
-       $posts = factory(\crossover\News::class,10);
-       $response = $this->get(action('newsController@index'));
-       
+       $response = $this->get('/');
        $response->assertStatus(200);
        
-       foreach($posts as $post)
-       {
-           $response->assertSee($post->title);
-       }
    }
     
 }
