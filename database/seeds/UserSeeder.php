@@ -11,6 +11,10 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
+        //Delete data before start seeding
+        DB::table('users')->delete();
+        
+        
         //Inserting a fake user
         DB::table('users')->insert([
            'name'=>"Fake User",

@@ -5,6 +5,13 @@ Welcome to Cross Over News! In order to start the application you need to follow
 Pre-requisites
 
     PHP >= 5.6.3
+        php5.6-curl
+        php5.6-mbstring
+        php5.6-json
+        php5.6-mysql (PDO driver to MySQL)
+        php5.6-xml
+        php5.6-zip
+
     MySQL >= 5.7
     Laravel 5.4.x
     Debian like Linux System
@@ -51,9 +58,14 @@ Testing
     'env' => env('APP_ENV', 'testing'),
     
     
-    Run the tests available in tests/Feature directory:
+    Perform tests using dusk:
+    
+    php artisan dusk
+     
+
+    Tests available in tests/Browser directory:
               
-        vendor/bin/phpunit tests/Feature/testName
+        - HomePageTest
 
 
 Features

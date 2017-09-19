@@ -12,6 +12,11 @@ class NewsSeeder extends Seeder
      */
     public function run()
     {
+        
+        //Delete data before start seeding        
+        DB::table('news')->delete();
+        
+        
         //Inserting fake data to start testing
         DB::table('news')->insert([
            'title'=>"Mussum Ipsu",
