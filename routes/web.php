@@ -37,6 +37,8 @@ Route::get('/home/{id}','newsController@show')->where('id', '[0-9]+');
 
 Route::post('/home/deleteNews','newsController@showConfirm')->middleware('auth');
 
+//RSS
+Route::get('/rss','rssController@index');
 
 
 Auth::routes();

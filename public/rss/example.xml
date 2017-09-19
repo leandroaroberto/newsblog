@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+<channel>
+	<item>
+        <title>Rss title</title>
+        <link>http://news.crossover.com//home/1</link>
+        <description>summary</description>
+        </item>
+</channel>
+</rss>
