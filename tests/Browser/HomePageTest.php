@@ -24,7 +24,8 @@ class HomePageTest extends DuskTestCase
         
         $this->browse(function (Browser $browser) {
             $browser->visit('/')
-                    ->assertSee('Strange');
+                    ->assertSee('Strange')
+                    ->pause(3000);
         });
     }
         
@@ -39,7 +40,8 @@ class HomePageTest extends DuskTestCase
         
         $this->browse(function (Browser $browser) {
             $browser->visit('/')
-                    ->assertSee('Norwegian');
+                    ->assertSee('Norwegian')
+                    ->pause(3000);
         });
     }
     

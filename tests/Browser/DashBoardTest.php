@@ -11,7 +11,10 @@ class DashBoardTest extends DuskTestCase
     
     /** @test
      * 
-     * Check the creation of news
+     * Check the creation of news;
+     * Check the summary auto generation;
+     * Remove the news created
+     * Test dialog box: NO and YES options
      * 
      */
     public function dashboard_create_news(){
@@ -21,16 +24,27 @@ class DashBoardTest extends DuskTestCase
               ->visit('/home')
               ->clickLink('Add new')
               ->assertSee('Write a new News');
+        $dash->visit('/home/add')
+                ->type('title','Test News Dusk X')
+                ->type('text','Per aumento de cachacis, eu reclamis. Suco de cevadiss deixa as pessoas mais interessantis. Quem num gosta di mé, boa gentis num é. Não sou faixa preta cumpadi, sou preto inteiris, inteiris.')
+                ->press('Send')
+                ->visit('/home')
+                ->assertSee('Test News Dusk')
+                ->assertSee('Per aumento de cachacis, eu reclamis. Suco de cevadiss deixa as pessoas mais interessantis. Quem num gosta...')
+                ->pause(3000);
         
-        
-        /*$b->loginAs(User::find(2))
-               ->visit('/home')
-               ->waitForText('Message')
-               ->type('message', 'Hey Taylor')
-               ->press('Send');
-
-        $c->waitForText('Hey Taylor')
-              ->assertSee('Jeffrey Way');*/
+        $dash->visit('/home')
+                ->clickLink('Test News Dusk X')
+                ->assertSee(' sou faixa preta cumpadi')
+                ->press('Remove this post')
+                ->assertSee('You are about to delete this item, are you sure?')
+                ->press('No')
+                ->assertPathIs('/home')
+                ->clickLink('Test News Dusk X')
+                ->press('Remove this post')
+                ->press('Yes')
+                ->assertDontSee('Test News Dusk X')
+                ->pause(3000);        
         });        
         
     }

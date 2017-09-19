@@ -21,7 +21,8 @@ class LoginTest extends DuskTestCase
                         ->type('email', 'fake@123.com')
                         ->type('password', '123456')
                         ->press('Login')
-                        ->assertPathIs('/home');
+                        ->assertPathIs('/home')
+                        ->pause(3000);
             });
     }
     
