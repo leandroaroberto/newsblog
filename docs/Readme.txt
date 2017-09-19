@@ -60,12 +60,13 @@ Testing
     
     Perform tests using dusk:
     
-    php artisan dusk
-     
+    php artisan dusk     
 
     Tests available in tests/Browser directory:
               
         - HomePageTest
+        - LoginTest
+        - DashBoardTest
 
 
 Features

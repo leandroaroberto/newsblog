@@ -28,16 +28,16 @@ Route::get('/home/add', 'newsController@addNews',['message'=>''])->middleware('a
 
 Route::post('/home/saveNews', 'newsController@saveNews')->middleware('auth');
 
-//Route::get('/home/remove/{id}','newsController@remove')->middleware('auth');;
 
-Route::post('/home/remove/','newsController@remove')->middleware('auth');;
-
-Route::get('/home/{id}','newsController@show');
+Route::post('/home/remove/','newsController@remove')->middleware('auth');
 
 
-Route::post('/home/deleteNews','newsController@showConfirm');
+Route::get('/home/{id}','newsController@show')->where('id', '[0-9]+');
+
+
+Route::post('/home/deleteNews','newsController@showConfirm')->middleware('auth');
+
 
 
 Auth::routes();
 
-//Route::get('/home', 'HomeController@index')->name('home');

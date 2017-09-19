@@ -123,8 +123,9 @@ class newsController extends Controller
         catch (Exception $e){
             return $e->message();
         }
-                
-        return redirect()->action('newsController@addNews')->withMessage("Your article has been submitted.");
+          
+        return view('news.success');
+        //return redirect()->action('newsController@addNews')->withMessage("Your article has been submitted.");
         
         
     }

@@ -28,8 +28,10 @@ class DashBoardTest extends DuskTestCase
                 ->type('title','Test News Dusk X')
                 ->type('text','Per aumento de cachacis, eu reclamis. Suco de cevadiss deixa as pessoas mais interessantis. Quem num gosta di mé, boa gentis num é. Não sou faixa preta cumpadi, sou preto inteiris, inteiris.')
                 ->press('Send')
-                ->visit('/home')
-                ->assertSee('Test News Dusk')
+                ->assertSee('Article has been created successfully!')
+                ->pause(3000)
+                ->clickLink('Back')
+                ->assertSee('Test News Dusk X')
                 ->assertSee('Per aumento de cachacis, eu reclamis. Suco de cevadiss deixa as pessoas mais interessantis. Quem num gosta...')
                 ->pause(3000);
         
@@ -48,6 +50,23 @@ class DashBoardTest extends DuskTestCase
         });        
         
     }
+    
+     /** @test
+     * 
+     * Check if it is possible to create a blank article
+     * 
+     */
+    public function dashboard_create_blank_news(){
+        
+        $this->browse(function ($dash) {
+        $dash->loginAs('fake@123.com')
+              ->visit('/home/add')                              
+                ->press('Send')
+                ->assertDontSee('Article has been created successfully!')
+                ->pause(3000); 
+        });
+    }
+    
     
     
 }
