@@ -68,7 +68,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'America/Sao_Paulo',
 
     /*
     |--------------------------------------------------------------------------
@@ -182,6 +182,8 @@ return [
         crossover\Providers\EventServiceProvider::class,
         crossover\Providers\RouteServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
+        /* DOM PDF Library */
+        Barryvdh\DomPDF\ServiceProvider::class,
 
     ],
 
@@ -234,7 +236,7 @@ return [
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
         'dusk' => Laravel\Dusk\DuskServiceProvider::class,
-
+        'PDF' => Barryvdh\DomPDF\Facade::class,
     ],
 
 ];

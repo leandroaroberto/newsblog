@@ -10,7 +10,7 @@
                 <h2><a href="/home/{{$news->id}}">{{ $news->title }}</a></h2> 
             </div>
             <div style="width:100%">
-                <small>{{$news->created_at }}</small>
+                <small>{{$news->created_at }} - {{$news->name}} - {{$news->email}}</small>
             </div>              
             <table width="100%">
                 <tr>                    

@@ -40,6 +40,13 @@ Route::post('/home/deleteNews','newsController@showConfirm')->middleware('auth')
 //RSS
 Route::get('/rss','rssController@index');
 
+Route::get('/pdf/{id}','newsController@toPDF');
+
+/*Route::get('/pdf',function(){
+    $pdf = PDF::loadview('pdf');
+    return $pdf->download('file.pdf');    
+});*/
+
 
 Auth::routes();
 

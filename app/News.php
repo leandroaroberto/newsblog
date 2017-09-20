@@ -9,7 +9,7 @@ class News extends Model
 {
     //
     protected $table = "news";
-    protected $filable = ['title','photo','fulltext','summary','email',];
+    protected $filable = ['title','photo','fulltext','summary','email','name'];
     use SoftDeletes;
     protected $dates = ['deleted_at'];
     

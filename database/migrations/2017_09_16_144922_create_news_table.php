@@ -18,8 +18,9 @@ class CreateNewsTable extends Migration
             $table->string('title',100);
             $table->string('photo',100)->nullable()->default('nopic.jpg');
             $table->longText('fulltext');
-            $table->text('summary')->nullable();
+            $table->text('summary')->nullable();           
             $table->string('email');
+             $table->string('name');
             $table->foreign('email')
                         ->references('email')
                         ->on('users')

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use crossover\News;
 use crossover\User;
 use Illuminate\Support\Facades\Auth;
+use PDF;
 
 class newsController extends Controller
 {
@@ -16,6 +17,9 @@ class newsController extends Controller
         $news = News::orderBy('created_at', 'desc')
                ->take(10)
                ->get();
+        
+        
+        
         /*$news = News::orderBy('created_at', 'desc')
                ->paginate(10);*/       
         
@@ -71,6 +75,8 @@ class newsController extends Controller
                 $max = intval($max);
                 $newText = "";
                 
+                if ($max > 100) $max=100;
+                
                 for($i = 0; $i <= $max; $i++)
                 {
                     $newText .= $textSummary[$i]. " ";
@@ -87,7 +93,8 @@ class newsController extends Controller
             
         }    
         
-        $news->email = Auth::user()->email;        
+        $news->email = Auth::user()->email; 
+        $news->name = Auth::user()->name;
         $userid = Auth::user()->id;
         
         //Upload
@@ -164,6 +171,24 @@ class newsController extends Controller
         $id = $data->input('id');
         $return = $data->input('return');        
         return view('confirm')->with(['str1'=> $str1,'action'=> $action, 'method'=> $method, 'id'=> $id, 'return' => $return]);                
+    }
+    
+    
+    //Creates a pdf file
+    public function toPDF($id){        
+        
+        //PDF::loadHTML($html)->setPaper('a4', 'landscape')->setWarnings(false)->save('myfile.pdf');
+        
+        /*$pdf = PDF::loadview('pdf');
+        return $pdf->download('file.pdf');*/  
+        
+        $news = News::where('id', $id)               
+                   ->get();
+        $pdf = PDF::loadView('pdf', ['news'=> $news]);
+        return $pdf->download('news.pdf');
+        
+        
+        //return PDF::load($html, 'A4', 'portrait')->save('/uploads/teste.pdf')->stream('download.pdf');
     }
     
     

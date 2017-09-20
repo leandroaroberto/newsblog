@@ -5,8 +5,8 @@
     @foreach($news as $data)
     
     <h2>{{$data->title}}</h2>
-    <small>{{$data->created_at }} - Leandro Roberto</small><!-- Pegar o nome da tabela users -->
-    <br><a href="#">PDF</a>
+    <small>{{$data->created_at }} - {{$data->name}} - {{$data->email}}</small>
+    <br><a href="/pdf/{{ $data->id }}">PDF</a>
     
         @if($data->photo != 'uploads/nopic.jpg')
             <p align='center'>
