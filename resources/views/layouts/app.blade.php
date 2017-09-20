@@ -15,6 +15,9 @@
     {{Html::style('css/bootstrap.min.css')}}
     {{Html::style('css/bootstrap-theme.min.css')}}
     {{Html::style('css/extra.css')}}
+    <!-- TinyMCE -->
+    {{Html::script('tinymce/js/tinymce/tinymce.min.js')}}
+   
 </head>
 <body>
     <div id="app">
@@ -82,5 +85,6 @@
     <!--<script src="{{ asset('js/app.js') }}"></script>-->
     {{ Html::script('js/jquery-3.2.1.min.js')}}
     {{ Html::script('js/bootstrap.min.js')}}
+     
 </body>
 </html>

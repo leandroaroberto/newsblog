@@ -52,8 +52,8 @@ class newsController extends Controller
     public function saveNews(Request $request){
 
         $this->validate($request, [
-        'title' => 'required|max:100',
-        'text' => 'required|',        
+        'title' => 'required|',
+        'text' => 'required',        
         'photo' => 'mimes:jpeg,jpg,png|file|dimensions:min_width=100,min_height=200,max_width=2500,max_height=1000',
         ]);
         
@@ -174,21 +174,14 @@ class newsController extends Controller
     }
     
     
-    //Creates a pdf file
+    //Creates a pdf file with info
     public function toPDF($id){        
-        
-        //PDF::loadHTML($html)->setPaper('a4', 'landscape')->setWarnings(false)->save('myfile.pdf');
-        
-        /*$pdf = PDF::loadview('pdf');
-        return $pdf->download('file.pdf');*/  
         
         $news = News::where('id', $id)               
                    ->get();
         $pdf = PDF::loadView('pdf', ['news'=> $news]);
         return $pdf->download('news.pdf');
         
-        
-        //return PDF::load($html, 'A4', 'portrait')->save('/uploads/teste.pdf')->stream('download.pdf');
     }
     
     

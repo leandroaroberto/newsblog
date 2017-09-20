@@ -185,6 +185,7 @@ return [
         /* DOM PDF Library */
         Barryvdh\DomPDF\ServiceProvider::class,
 
+
     ],
 
     /*
@@ -237,6 +238,7 @@ return [
         'Html' => Collective\Html\HtmlFacade::class,
         'dusk' => Laravel\Dusk\DuskServiceProvider::class,
         'PDF' => Barryvdh\DomPDF\Facade::class,
+        
     ],
 
 ];

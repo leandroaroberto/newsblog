@@ -15,6 +15,7 @@ Pre-requisites
     MySQL >= 5.7
     Laravel 5.4.x
     Debian like Linux System
+    Apache > = 2.4
 
 Installation
 
@@ -71,14 +72,25 @@ Testing
 
 Features
 
-        Auto-summary
+        *Auto-summary
         
         You do not need to write the summary (you can do if wish, no problem!), the application will generate it automatically based on
 the news full text.
 
-        Prepared to future trash implementation
+        *Prepared to future trash implementation
         
         In this software were implemented SoftDeletes in order to prevent erase mistakes. The program set the deleted_at value in database
 and it can be restored in the future just cleaning this field.
 
+        *PDF Export
+        
+        Exports the full content of the article to PDF.
 
+        *RSS
+
+        Stay always up-to-date with this RSS Feed
+
+        *Prepared to future implementation of TinyMCE WYSIWYG
+
+            Package installed to implement TinyMCE (It will be available on next version of this system!)
+        

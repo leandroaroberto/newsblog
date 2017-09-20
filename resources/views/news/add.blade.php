@@ -1,6 +1,11 @@
 @extends('layouts.app')
 @section('content')
 
+<script>
+  tinymce.init({
+    selector: '#textMC'
+  });
+  </script>
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
@@ -32,7 +37,7 @@
                     </p>
                     <p>
                     {{Form::label('text','*Text: ') }}
-                    {{Form::textarea('text','',['class'=>'form-control','required','rows'=>8, 'placeholder'=>'The fulltext of your News'])}}                    
+                    {{Form::textarea('text','',['class'=>'form-control','required','rows'=>8, 'placeholder'=>'The fulltext of your News','id'=>'textMCE'])}}                    
                     </p>
                     <p>
                     {{Form::label('summary','Summary: ') }}
