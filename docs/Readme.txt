@@ -20,7 +20,7 @@ Pre-requisites
 Installation
 
     - Unzip the file Leandro_A_Roberto - Software Engineer - PHP.zip into your apache htdocs directory
-    - Creating the MySQL database and set the credentials into config/database.php like below:
+    - Create the MySQL database and set the credentials into config/database.php like below:
 
     'mysql' => [
             'driver' => 'mysql',
@@ -93,4 +93,14 @@ and it can be restored in the future just cleaning this field.
         *Prepared to future implementation of TinyMCE WYSIWYG
 
             Package installed to implement TinyMCE (It will be available on next version of this system!)
+
+FeedBack
+
+	I had some throubles to record the demo video with WINK because I am using Ubuntu Linux x64 and there is no version of the software built for it. However, 
+I recorded my screen with other software called Vokoscreen that, in comparison with WINK, looks to record with better quality. I would like to recommend to you.
+	In order to keep the format SWF, I converted my MP4 file. I hope You uderstand.
+
+	
+
+
         

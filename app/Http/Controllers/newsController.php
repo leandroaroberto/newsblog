@@ -17,12 +17,7 @@ class newsController extends Controller
         $news = News::orderBy('created_at', 'desc')
                ->take(10)
                ->get();
-        
-        
-        
-        /*$news = News::orderBy('created_at', 'desc')
-               ->paginate(10);*/       
-        
+
         return view('index')->with(['latest'=> $news]);        
     }
     
@@ -132,7 +127,6 @@ class newsController extends Controller
         }
           
         return view('news.success');
-        //return redirect()->action('newsController@addNews')->withMessage("Your article has been submitted.");
         
         
     }

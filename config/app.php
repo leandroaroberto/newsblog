@@ -27,7 +27,7 @@ return [
 
     /*'env' => env('APP_ENV', 'production'),*/
     
-    'env' => env('APP_ENV', 'testing'),
+    'env' => env('APP_ENV', 'production'),
     
 
     /*
@@ -166,7 +166,7 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-        Laravel\Dusk\DuskServiceProvider::class,
+        //Laravel\Dusk\DuskServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -236,7 +236,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
-        'dusk' => Laravel\Dusk\DuskServiceProvider::class,
+        //'dusk' => Laravel\Dusk\DuskServiceProvider::class,
         'PDF' => Barryvdh\DomPDF\Facade::class,
         
     ],

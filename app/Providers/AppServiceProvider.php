@@ -26,7 +26,7 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         //Restricting access to dusk
-        if ($this->app->environment('local', 'testing')) 
+        if ($this->app->environment('local','testing')) 
         {
             $this->app->register(DuskServiceProvider::class);
         }
