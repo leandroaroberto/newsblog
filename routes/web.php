@@ -48,3 +48,20 @@ Route::get('rss','rssController@index');
 
 //RSS
 
+//mailgun
+Route::get('mail', function(){
+	Mail::raw('Sending emails with Mailgun and Laravel is easy!', function($message)
+	{
+		$message->to('leroberto@gmail.com');
+	});
+});
+
+
+/*Route::get('mail', function(){
+	Mail::raw('Sending emails with Mailgun and Laravel is easy!', function($message)
+	{
+		$message->subject('Mailgun and Laravel are awesome!');
+		$message->from('no-reply@leandroroberto.com.br', 'Leandro Roberto Fotografia');
+		$message->to('leroberto@gmail.com');
+	});
+});*/

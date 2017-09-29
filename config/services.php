@@ -15,8 +15,8 @@ return [
     */
 
     'mailgun' => [
-        'domain' => env('MAILGUN_DOMAIN'),
-        'secret' => env('MAILGUN_SECRET'),
+        'domain' => 'mg.leandroroberto.com.br',
+        'secret' => 'key-61f2ad2b5497ae418f7ab5b22fa563a9',
     ],
 
     'ses' => [
