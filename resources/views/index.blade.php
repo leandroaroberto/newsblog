@@ -1,40 +1,32 @@
 @extends('layouts.app')
 @section('content')
 
-<div class="container">
-    <h1>Latest News</h1>    
+    <h1>Latest News</h1>
     @if(count($latest) > 0)
-        @foreach($latest as $news) 
-        <div class="alert bg-grey" >        
-            <div style="width:100%">
-                <h2><a href="/home/{{$news->id}}">{{ $news->title }}</a></h2> 
-            </div>
-            <div style="width:100%">
-                <small>{{$news->created_at }} - {{$news->name}} - {{$news->email}}</small>
-            </div>              
-            <table width="100%">
-                <tr>                    
-                    <td width="20%">
-                        <a href="/home/{{$news->id}}">    
-                        @if($news->photo != '')
-                            {{ Html::image($news->photo,'alt', array( 'width' => 200, 'height' => 149 , 'class' => 'd-inline-block align-top')) }}
-                        @else
-                            {{ Html::image('uploads/nopic.jpg') }}
-                        @endif           
-                        </a>            
-                    </td>
-                    <td width="80%">{{ $news->summary }}</td> 
-                </tr>
-            </table>
-        </div>
-        
+    <div class="row">
+        @foreach($latest as $news)
+            @component('components.custom-content')
+              @slot('title')
+                <a href="/home/{{$news->id}}">{{ $news->title }}</a>
+              @endslot
+              @slot('image')
+                {{$news->photo}}
+              @endslot
+              @slot('breadcumbs')
+                {{$news->created_at }} - {{$news->name}} - {{$news->email}}
+              @endslot
+              @slot('summary')
+                {{ $news->summary }}
+              @endslot
+              @slot('link')
+                /home/{{$news->id}}
+              @endslot
+            @endcomponent
         @endforeach
+    </div>
+
     @else
-        <p>Strange, but today we do not have any news!</p>    
-    @endif 
-    
-    
-    
-</div>
+        <p>Strange, but today we do not have any news!</p>
+    @endif
 
 @endsection

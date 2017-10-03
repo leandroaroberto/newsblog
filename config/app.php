@@ -12,7 +12,7 @@ return [
     | any other location as required by the application or its packages.
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'Cross Over News'),
 
     /*
     |--------------------------------------------------------------------------
@@ -26,9 +26,9 @@ return [
     */
 
     /*'env' => env('APP_ENV', 'production'),*/
-    
+
     'env' => env('APP_ENV', 'production'),
-    
+
 
     /*
     |--------------------------------------------------------------------------
@@ -238,7 +238,7 @@ return [
         'Html' => Collective\Html\HtmlFacade::class,
         //'dusk' => Laravel\Dusk\DuskServiceProvider::class,
         'PDF' => Barryvdh\DomPDF\Facade::class,
-        
+
     ],
 
 ];

@@ -11,13 +11,13 @@
     <title>Cross|Over News</title>
 
     <!-- Styles -->
-    <!--<link href="{{ asset('css/app.css') }}" rel="stylesheet">-->
     {{Html::style('css/bootstrap.min.css')}}
     {{Html::style('css/bootstrap-theme.min.css')}}
-    {{Html::style('css/extra.css')}}
+
+
     <!-- TinyMCE -->
     {{Html::script('tinymce/js/tinymce/tinymce.min.js')}}
-   
+
 </head>
 <body>
     <div id="app">
@@ -48,7 +48,7 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
-                        <li><a href="/rss">RSS</a></li>
+                        <li><a href="{{ route('rss') }}">RSS</a></li>
                         @if (Auth::guest())
                             <li><a href="{{ route('login') }}">Login</a></li>
                             <li><a href="{{ route('register') }}">Register</a></li>
@@ -73,18 +73,22 @@
                                 </ul>
                             </li>
                         @endif
+                        <li><a href="{{ route('contact') }}">Contact us</a></li>
                     </ul>
                 </div>
-            </div>
-        </nav>
-
-        @yield('content')
+            </nav>
     </div>
 
+
+
+</div>
+    <div class="container">
+        @yield('content')
+    </div>
     <!-- Scripts -->
     <!--<script src="{{ asset('js/app.js') }}"></script>-->
     {{ Html::script('js/jquery-3.2.1.min.js')}}
     {{ Html::script('js/bootstrap.min.js')}}
-     
+
 </body>
 </html>

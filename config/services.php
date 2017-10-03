@@ -17,6 +17,8 @@ return [
     'mailgun' => [
         'domain' => 'mg.leandroroberto.com.br',
         'secret' => 'key-61f2ad2b5497ae418f7ab5b22fa563a9',
+        //'domain' => 'sandbox6c3ed8f3743e4e908ab901123ffc7663.mailgun.org',
+        //'secret' => 'key-61f2ad2b5497ae418f7ab5b22fa563a9',
     ],
 
     'ses' => [
