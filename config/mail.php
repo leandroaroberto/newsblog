@@ -57,8 +57,8 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
-        'name' => env('MAIL_FROM_NAME', 'Example'),
+        'address' => env('MAIL_FROM_ADDRESS', 'contato@leandroroberto.com.br'),
+        'name' => env('MAIL_FROM_NAME', 'Do not Reply'),
     ],
 
     /*
@@ -92,7 +92,7 @@ return [
     'password' => 'b11b5a816a9ee08e30aea0c2dc759efa',
     //'username' => 'postmaster@sandbox6c3ed8f3743e4e908ab901123ffc7663.mailgun.org',
     //'password' => 'daaef59e294fa8e45b20e6dd70de0a4c',
-    
+
 
     /*
     |--------------------------------------------------------------------------

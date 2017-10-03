@@ -34,12 +34,6 @@ Route::get('rss','rssController@index')->name('rss');
 Route::get('contact','mailController@index')->name('contact');
 Route::post('contact/send','mailController@sendMail');
 
-/*Route::get('mail', function(){
-	Mail::raw('Sending emails with Mailgun and Laravel is easy!', function($message)
-	{
-		$message->subject('Mailgun and Laravel are awesome!');
-		$message->from('no-reply@leandroroberto.com.br', 'Leandro Roberto Fotografia');
-		$message->to('leroberto@gmail.com');
-	});
-        echo "Mail sent successfuly!";
-});*/
+//USer email Validation
+
+Route::get('/verifyemail/{token}', 'Auth\RegisterController@verify');
