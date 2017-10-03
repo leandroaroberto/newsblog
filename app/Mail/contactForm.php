@@ -16,9 +16,13 @@ class contactForm extends Mailable
      *
      * @return void
      */
-    public function __construct()
+
+     public $dados;
+    public function __construct($dados)
     {
         //
+
+        $this->dados = $dados;
     }
 
     /**
@@ -28,6 +32,7 @@ class contactForm extends Mailable
      */
     public function build()
     {
-        return $this->markdown('mail.mdContact');
+        return $this->markdown('mail.mdContact')
+          ->with(['message'=> $this->dados[1], 'title'=> $this->dados[0]]);
     }
 }

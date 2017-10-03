@@ -1,7 +1,7 @@
 @component('mail::message')
-# New Message
+# {{$title}}
+{{$message}}
 
-The body of **your message**.
 
 @component('mail::button', ['url' => 'http://news.crossover.com'])
 Go to site

@@ -19,12 +19,17 @@ class mailController extends Controller
 
     public function sendMail(Request $request){
 
-        $data = array(
+        /*$data = array(
             'subject' => $request->input('subject'),
             'message' => $request->input('message'),
-        );
+        );*/
 
-        Mail::to('leroberto@gmail.com')->send(new contactForm());
+        $dados[] = $request->input('subject');
+        $dados[] = $request->input('message');
+
+
+
+        Mail::to('leroberto@gmail.com')->send(new contactForm($dados));
 
 
         /*Mail::send(['mail.contact'], $data, function($message)
