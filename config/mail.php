@@ -57,7 +57,7 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'yourmail@here.com'),
+        'address' => env('MAIL_FROM_ADDRESS', 'contato@leandroroberto.com.br'),
         'name' => env('MAIL_FROM_NAME', 'Do not Reply'),
     ],
 
@@ -85,8 +85,10 @@ return [
     |
     */
 
-    'username' => env('MAIL_USERNAME'),
-    'password' => env('MAIL_PASSWORD'),
+    /*'username' => env('MAIL_USERNAME'),
+    'password' => env('MAIL_PASSWORD'),*/
+    'username' => 'postmaster@mg.leandroroberto.com.br',
+    'password' => 'b11b5a816a9ee08e30aea0c2dc759efa',
     
 
 
