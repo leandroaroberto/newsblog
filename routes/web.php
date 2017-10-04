@@ -18,22 +18,24 @@ Route::get('/home/add', 'newsController@addNews',['message'=>''])->middleware('a
 Route::post('/home/saveNews', 'newsController@saveNews')->middleware('auth');
 Route::post('/home/remove/','newsController@remove')->middleware('auth');
 Route::get('/home/{id}','newsController@show')->where('id', '[0-9]+');
-Route::post('/home/deleteNews','newsController@showConfirm')->middleware('auth');
+
+
+//Dialogs
+Route::post('/home/deleteNews','dialogController@showConfirm')->middleware('auth');
 
 //PDF
-Route::get('/pdf/{id}','newsController@toPDF');
+Route::get('/pdf/{id}','pdfController@toPDF');
 
 //AUTH
 Auth::routes();
+Route::get('/verifyemail/{token}', 'Auth\RegisterController@verify');
+
 
 //RSS
 Route::get('rss','rssController@index')->name('rss');
 
 //MAIL
-
 Route::get('contact','mailController@index')->name('contact');
 Route::post('contact/send','mailController@sendMail');
 
-//USer email Validation
 
-Route::get('/verifyemail/{token}', 'Auth\RegisterController@verify');

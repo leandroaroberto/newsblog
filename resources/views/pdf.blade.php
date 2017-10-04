@@ -1,4 +1,4 @@
-<h1>Cross Over News</h1>
+<h1>News</h1>
 
 @foreach($news as $n)
 <h2>{{$n->title}}</h2>

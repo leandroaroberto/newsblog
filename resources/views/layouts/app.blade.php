@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Cross|Over News</title>
+    <title>News</title>
 
     <!-- Styles -->
     {{Html::style('css/bootstrap.min.css')}}
@@ -35,7 +35,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ Auth::guest() ? url('/') : url('/home') }}">
-                        Cross|Over News
+                        News
                     </a>
                 </div>
 

@@ -26,12 +26,12 @@ class rssController extends Controller
         $xml->writeAttribute( 'xmlns:atom', 'http://www.w3.org/2005/Atom' );
 
         $xml->startElement( 'channel' );
-        $xml->writeElement( 'title', 'Cross Over News RSS Channel');
-        $xml->writeElement( 'link', 'http://news.crossover.com/rss');
+        $xml->writeElement( 'title', 'News RSS Channel');
+        $xml->writeElement( 'link', 'http://localhost/rss');
         $xml->writeElement( 'description', 'Stay always updated with this RSS Feed!' );
         $xml->writeElement( 'pubDate', date( "D, d M Y H:i:s e" ) );
         $xml->writeElement( 'language', 'EN' );
-        $xml->writeElement( 'copyright', 'Cross Over News' );
+        $xml->writeElement( 'copyright', 'News' );
         
         
         foreach($news as $nx) {

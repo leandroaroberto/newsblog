@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use PDF;
 
 class newsController extends Controller
-{
+{   
     
     // List Latest News on HomePage
     public function index(){        
@@ -19,25 +19,19 @@ class newsController extends Controller
                ->get();
 
         return view('index')->with(['latest'=> $news]);        
-    }
-    
+    }    
     
     //Dashboard start page when loged in
     public function dashboard(){
                 
         $email = Auth::user()->email;
-        $name = Auth::user()->name;
-               
-        /*$data = News::where('email', $email)
-               ->orderBy('created_at', 'desc')               
-               ->get();*/
-        
+        $name = Auth::user()->name;        
         $data = News::where('email', $email)
                ->orderBy('created_at', 'desc')               
-               ->paginate(5);
-        
+               ->paginate(5);        
         return view('home')->with(['data'=> $data,'name'=> $name]);
-    }
+    }    
+    
     
     public function addNews($message = null){
         return view('news.add')->with('message',$message);
@@ -156,27 +150,5 @@ class newsController extends Controller
         return redirect()->action('newsController@dashboard');
         
     }
-     
-    //Dialog to confirm article exclusion
-     public function showConfirm(Request $data){               
-        $str1 = $data->input('str1');
-        $action = $data->input('action');
-        $method = $data->input('method');        
-        $id = $data->input('id');
-        $return = $data->input('return');        
-        return view('confirm')->with(['str1'=> $str1,'action'=> $action, 'method'=> $method, 'id'=> $id, 'return' => $return]);                
-    }
-    
-    
-    //Creates a pdf file with info
-    public function toPDF($id){        
-        
-        $news = News::where('id', $id)               
-                   ->get();
-        $pdf = PDF::loadView('pdf', ['news'=> $news]);
-        return $pdf->download('news.pdf');
-        
-    }
-    
     
 }
