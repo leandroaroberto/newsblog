@@ -86,12 +86,10 @@ return [
     */
 
     /*'username' => env('MAIL_USERNAME'),
-
     'password' => env('MAIL_PASSWORD'),*/
     'username' => 'postmaster@mg.leandroroberto.com.br',
     'password' => 'b11b5a816a9ee08e30aea0c2dc759efa',
-    //'username' => 'postmaster@sandbox6c3ed8f3743e4e908ab901123ffc7663.mailgun.org',
-    //'password' => 'daaef59e294fa8e45b20e6dd70de0a4c',
+    
 
 
     /*
